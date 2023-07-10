@@ -30,7 +30,13 @@ namespace Selenium_base
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ChromeDriver chromeDriver = new ChromeDriver(); //khởi tạo trình duyệt
+            //ChromeDriver chromeDriver = new ChromeDriver(); //khởi tạo trình duyệt
+
+            //Mở bằng profile có sẵn
+            ChromeOptions option = new ChromeOptions();
+            option.AddArguments("user-data-dir=/Users/nhduo/AppData/Local/Google/Chrome/User Data/");
+            option.AddArguments("profile-directory=Default");
+            ChromeDriver chromeDriver = new ChromeDriver(option);
 
             //Định hướng tới một trang web vd: w3schools.com
             chromeDriver.Url = "https://www.w3schools.com/"; //khởi tạo Url nên dùng như này

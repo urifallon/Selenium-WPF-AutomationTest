@@ -3,73 +3,70 @@
 
 |driver ở đây là chromeDriver or thành phần được khai báo từ "ChromeDriver" tương tự với Firefox|
 
-----------------------------------------------------------------
-Một số thuộc tính và phương thức cơ bản trong Selenium
-----------------------------------------------------------------
+# Một số thuộc tính và phương thức cơ bản trong Selenium
 
---> Lấy Source page hiện tại
+--> **Lấy Source page hiện tại**
 driver.PageSource
 
---> Lấy địa chỉ URL hiện tại:
+--> **Lấy địa chỉ URL hiện tại:**
 driver.Url
 
---> Chuyển tới trang trước,sau đó:
+--> **Chuyển tới trang trước,sau đó:**
 driver.Navigate().Back()
 driver.Navigate().Forwad()
 
---> F5 (Refresh) lại trang: 
+--> **F5 (Refresh) lại trang:**
 driver.Navigate().Refresh()
 
---> Handle arlet:
+--> **Handle arlet:**
 IAlert a = driver.SwitchTo().Alert();
 a.Accept();
 a.Dismiss();
 
---> Chuyển đổi giữa các cửa sổ hoặc tab:
+--> **Chuyển đổi giữa các cửa sổ hoặc tab:**
 ReadOnlyCollection<string> windowHandles = driver.WindowHandles;
 string firstTab = windowHandles.First();
 string lastTab = windowHandles.Last();
 driver.SwitchTo().Window(lastTab);
 
---> Maximize window:
+--> **Maximize window:**
 this.driver.Manage().Window.Maximize();
 
---> Add cookies:
+--> **Add cookies:**
 Cookie cookie = new OpenQA.Selenium.Cookie("key", "value");
 this.driver.Manage().Cookies.AddCookie(cookie);
 
---> Get all cookies:
+--> **Get all cookies:**
 var cookies = this.driver.Manage().Cookies.AllCookies;
 
---> Delete cookie:
+--> **Delete cookie:**
 this.driver.Manage().Cookies.DeleteCookieNamed("CookieName");
 
---> Chụp màn hình:
+--> **Chụp màn hình:**
 Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
 screenshot.SaveAsFile(@"pathToImage", ImageFormat.Png);
 @pathToImage là đường dẫn tới file hình sẽ lưu
 
---> Đợi đến khi Website load xong hết các đoạn JavaScript:
+--> **Đợi đến khi Website load xong hết các đoạn JavaScript:**
 WebDriverWait wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(30));
 wait.Until((x) =>
 {
  return ((IJavaScriptExecutor)this.driver).ExecuteScript("return document.readyState").Equals("complete");
 });
 
---> Chuyển đổi giữa các frames:
+--> **Chuyển đổi giữa các frames:**
 this.driver.SwitchTo().Frame(1);
 this.driver.SwitchTo().Frame("frameName");
 IWebElement element = this.driver.FindElement(By.Id("id"));
 this.driver.SwitchTo().Frame(element);
 
---> Chuyển tới document mặc định:
+--> **Chuyển tới document mặc định:**
 this.driver.SwitchTo().DefaultContent();
 
-----------------------------------------------------------------
-Tương tác với Selenium
-----------------------------------------------------------------
 
---> Lấy ra một đối tượng với ID - Classname - CssSelector - LinkText - Name - PartialLinkText - TagName
+# Tương tác với Selenium
+
+--> **Lấy ra một đối tượng với ID - Classname - CssSelector - LinkText - Name - PartialLinkText - TagName**
 driver.FindElement(By.Id("id"))
 driver.FindElement(By.ClassName("className"));
 driver.FindElement(By.CssSelector("css"));
@@ -81,58 +78,58 @@ driver.FindElement(By.TagName("input"));
 !!! Các element này đang được tìm ở Window hoặc frame đang active.
 !!!! Sử dụng XPath nếu k được sử dụng theo CssSelector
 
---> Điền giá trị vào đối tượng
+--> **Điền giá trị vào đối tượng**
 Variable.SendKeys("Selenium Kteam");
 Variable là biến đã được gán với đối tượng vd: var Variable = chromeDriver.FindElement(By.Id("id"));
 
---> Click vào đối tượng
+--> **Click vào đối tượng**
 Variable.Click();
 Variable là biến đã được gán với đối tượng vd: var Variable = chromeDriver.FindElement(By.Id("id"));
 
---> Lấy dữ liệu từ JS như: text, bla bla...
+--> **Lấy dữ liệu từ JS như: text, bla bla...**
 // thực thi JavaScript dùng IJavaScriptExecutor
 IJavaScriptExecutor js = chromeDriver as IJavaScriptExecutor;
 // javascript cần return giá trị.
 var dataFromJS = (string)js.ExecuteScript("var content = document.getElementsByClassName('contentpagetop')[0].children[0].innerHTML;return content;");
 MessageBox.Show(dataFromJS);
 
---> Xóa ALL nội dung Element
+--> **Xóa ALL nội dung Element**
 Variable.Clear();
 Variable là biến đã được gán với đối tượng vd: var Variable = chromeDriver.FindElement(By.Id("id"));
 
---> Kiểm tra 2 element có phải là 1 hay không
+--> **Kiểm tra 2 element có phải là 1 hay không**
 bool isDisplayed = Variable.Equals(Variable1);
 
---> Tìm element trong element hiện tại
+--> **Tìm element trong element hiện tại**
 Variable Ele = Variable.FindElement(By.Id("NULL"));
 !!! result is an Element
 
---> Tìm các element trong element hiện tại
+--> **Tìm các element trong element hiện tại**
 List<Variable> EleList = Variable.FindElements(By.Id("NULL"));
 !!! result is an Element
 
---> Lấy thuộc tính HTML mà element đó đang có
+--> **Lấy thuộc tính HTML mà element đó đang có**
 String href = Variable.GetAttribute("href");
 
---> Lấy thuộc tính CSS mà element đó đang có
+--> **Lấy thuộc tính CSS mà element đó đang có**
 String css = Variable.GetCssValue("font-size");
 
---> Lấy tọa độ mà element đó đang có
+--> **Lấy tọa độ mà element đó đang có**
 System.Drawing.Point location = Variable.Location;
 
---> Kiểm tra element đã được chọn hay chưa 
+--> **Kiểm tra element đã được chọn hay chưa**
 bool isSelected = Variable.Selected;
 
---> Trả về kích thước của element trên website
+--> **Trả về kích thước của element trên website**
 System.Drawing.Size size = Variable.Size;
 
---> submit element cho webserver
+--> **submit element cho webserver**
 variable.submit();
 !!! nó sẽ tự tìm button để submit được cài sẵn
 
---> Lấy tagname của element
+--> **Lấy tagname của element**
 String tagname = Variable.TagName;
 
---> Lấy text của element
+--> **Lấy text của element**
 String text = Variable.Text;
 !!! khoảng trắng bị loại bỏ
