@@ -1,9 +1,13 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +27,7 @@ namespace Selenium_base
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,21 +35,46 @@ namespace Selenium_base
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //ChromeDriver chromeDriver = new ChromeDriver(); //khởi tạo trình duyệt
-
-            //Mở bằng profile có sẵn
+            string ip = "91.218.49.111:9185";
+            string username = "r0tG5M";
+            string pass = "tPhRwY";
+            string forder = "Profile";
             ChromeOptions option = new ChromeOptions();
-            option.AddArguments("user-data-dir=/Users/nhduo/AppData/Local/Google/Chrome/User Data/");
-            option.AddArguments("profile-directory=Default");
+            if (!Directory.Exists(forder))
+            {
+                Directory.CreateDirectory(forder);
+            }
+            if (Directory.Exists(forder))
+            {
+                int indexProfile = 0;
+                string workingDirectory = Environment.CurrentDirectory;
+                option.AddArguments("user-data-dir="+ workingDirectory + "/" + forder +"/"+ indexProfile);
+                option.AddExtension(workingDirectory +"/" + "Extention/ggmdpepbjljkkkdaklfihhngmmgmpggp/2.0_0.crx");
+                var proxy = new Proxy();
+                proxy.Kind = ProxyKind.Manual;
+                proxy.IsAutoDetect = false;
+                proxy.SslProxy = ip;
+                option.Proxy = proxy;
+                option.AddArgument("ignore-certificate-errors");
+            }
             ChromeDriver chromeDriver = new ChromeDriver(option);
-
+            chromeDriver.Url = "chrome-extension://ggmdpepbjljkkkdaklfihhngmmgmpggp/options.html";
+            chromeDriver.Navigate();
+            var userName = chromeDriver.FindElement(By.Id("login"));
+            userName.SendKeys(username);
+            var Pass = chromeDriver.FindElement(By.Id("password"));
+            Pass.SendKeys(pass);
+            var Save = chromeDriver.FindElement(By.Id("save"));
+            Save.Click();
+            Thread.Sleep(10000);
             //Định hướng tới một trang web vd: w3schools.com
-            chromeDriver.Url = "https://www.w3schools.com/"; //khởi tạo Url nên dùng như này
+            chromeDriver.Url = "https://w3schools.com/"; //khởi tạo Url nên dùng như này
             chromeDriver.Navigate(); //hàm navigate sẽ mặc định trỏ tới url đã set hoặc có thể dùng chromeDriver.Navigate().GotoUrl("https://www.w3schools.com/")
+            
 
             ////Tìm đối tượng bằng ID
             var search = chromeDriver.FindElement(By.Id("search2"));
-
+            
             //Điền giá trị cho đối tượng
             search.SendKeys("HTML");
 

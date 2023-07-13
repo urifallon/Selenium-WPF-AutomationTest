@@ -1,0 +1,16 @@
+[2216:23280:0713/220741.721:WARNING:chrome_main_delegate.cc(593)] This is Chrome version 114.0.5735.199 (not a warning)
+[2216:23280:0713/220741.784:INFO:chrome_browser_cloud_management_controller.cc(167)] Starting CBCM Controller Initialization
+[2216:23280:0713/220741.784:INFO:chrome_browser_cloud_management_controller.cc(195)] No machine level policy manager exists.
+[2216:23280:0713/220752.383:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220752.420:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220752.440:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220755.449:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220756.237:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220756.439:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220756.659:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220756.858:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220757.030:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220757.227:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[2216:23280:0713/220757.419:INFO:CONSOLE(6577)] "crbug/1173575, non-JS module files deprecated.", source: chrome-error://chromewebdata/ (6577)
+[23996:8904:0713/221135.899:WARNING:chrome_main_delegate.cc(593)] This is Chrome version 114.0.5735.199 (not a warning)
+[2216:23280:0713/221153.366:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
