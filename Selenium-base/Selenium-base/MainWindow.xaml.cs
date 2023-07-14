@@ -35,9 +35,9 @@ namespace Selenium_base
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string ip = "91.218.49.111:9185";
-            string username = "r0tG5M";
-            string pass = "tPhRwY";
+            string ip = "ip:port";
+            string username = "user";
+            string pass = "pass";
             string forder = "Profile";
             ChromeOptions option = new ChromeOptions();
             if (!Directory.Exists(forder))
